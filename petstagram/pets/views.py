@@ -24,4 +24,4 @@ def pet_like(request, pk):
         pet=pet,
     )
     like.save()
-    return redirect('all pets')
+    return redirect('pet details', pet.id)
