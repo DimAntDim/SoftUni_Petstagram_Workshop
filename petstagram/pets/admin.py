@@ -1,9 +1,10 @@
-from pets.models import Like, Pets
+from pets.models import Like, Pet
 from django.contrib import admin
 
 
-@admin.register(Pets, Like)
-class PersAdmin(admin.ModelAdmin):
-    pass
+@admin.register(Pet)
+class PetAdmin(admin.ModelAdmin):
+    list_display = ('name', 'age', 'type', 'likes_count')
 
-
+    def likes_count(self, obj):
+        return obj.like_set.count()

@@ -2,11 +2,11 @@ from django.db import models
 from django.db.models.deletion import DO_NOTHING
 
 
-class Pets(models.Model):
+class Pet(models.Model):
     type_choices = (
-     ("cat", "Cat"),
-     ("dog", "Dog"),
-     ("parrot", "Parrot"),
+     ("Cat", "cat"),
+     ("Dog", "dog"),
+     ("Parrot", "parrot"),
     )
 
     type = models.CharField(max_length=6, choices=type_choices)
@@ -15,6 +15,9 @@ class Pets(models.Model):
     description = models.TextField(blank=True)
     image_url = models.URLField()
 
+    def __str__(self):
+        return self.name
 
 class Like(models.Model):
-    pet = models.ForeignKey(Pets, on_delete=models.CASCADE)
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
+    
