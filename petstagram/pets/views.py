@@ -19,9 +19,9 @@ def pet_details(request, pk):
 
 
 def pet_like(request, pk):
-    pet = Pet.objects.get(pk=pk)
+    pet_to_like = Pet.objects.get(pk=pk)
     like = Like(
-        pet=pet,
+        pet=pet_to_like,
     )
     like.save()
-    return redirect('pet details', pet.id)
+    return redirect('pet details', pet_to_like.id)
