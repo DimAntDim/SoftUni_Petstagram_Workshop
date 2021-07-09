@@ -42,10 +42,13 @@ def pet_create(request):
 
 def pet_edit(request, pk):
     pet = Pet.objects.get(pk=pk)
-    form = CreatePetForm(initial=pet)
-    if form.is_valid():
-        form.save()
-        return redirect('pet detail')
+    if request.method == 'POST':
+        form = CreatePetForm(request.POST, instance=pet)
+        if form.is_valid():
+            form.save()
+            return redirect('pet detail', pk=pk)
+    form = CreatePetForm(initial=pet.__dict__)
+    return render(request, 'pets/pet_edit.html', {'form':form})
 
 def pet_delete(request, pk):
     pass
