@@ -1,12 +1,12 @@
 from django import forms
-from ..pets.models import Pet
+from .models import Pet
 
 class CreatePetForm(forms.ModelForm):
     type = forms.ChoiceField(
         choices=[
-            ("dog", "dog"), 
-            ("cat", "cat"), 
-            ("parrot", "parrot")], 
+            ("Dog", "dog"), 
+            ("Cat", "cat"), 
+            ("Parrot", "parrot")], 
         required=True, 
         widget=forms.Select(
             attrs={

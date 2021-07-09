@@ -18,3 +18,8 @@ class Pet(models.Model):
 
 class Like(models.Model):
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
+
+
+class Comment(models.Model):
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
+    comment = models.TextField(blank=True)
