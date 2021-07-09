@@ -27,3 +27,12 @@ def pet_like(request, pk):
     )
     like.save()
     return redirect('pet details', pet_to_like.id)
+
+def pet_create(request):
+    pass
+
+def pet_edit(request, pk):
+    pass
+
+def pet_delete(request, pk):
+    pass
