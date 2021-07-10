@@ -21,10 +21,13 @@
             <ul class="navbar-nav">
                 <li>
                     <a class="nav-link" href="/">Home</a>
-                 </li>
-                 <li>
+                </li>
+                <li>
                     <a class="nav-link" href="{% url 'pet list' %}">All Pet Photos</a>
-                 </li>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'pet create' %}">Add Pet Photo</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Login</a>
                 </li>
@@ -34,20 +37,21 @@
             </ul>
         </div>
     </nav>
-    <div class="container">
-        <h1 class='text-center'>All pet photos</h1>
+    <h1 class='text-center'>All pet photos</h1>
+    <div class="container" style="display: grid; grid-template-columns: auto auto auto auto;">
         {% for pet in pets %}
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card" style="width: 18rem;">
+            <div class="row">              
+                <div class="col-lg-4">                   
+                    <div class="card" style="width: 18rem; " >                       
                         <img src="{{ pet.image_url }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{pet.name}}, Age: {{pet.age}}</h5>
-                            <p class="card-text">{{pet.description}}</p>
-                            <a href="{% url 'pet detail' pet.id %}" class="btn btn-primary">See details</a>
-                        </div>
-                    </div>
-                </div>
+                            <p class="card-text">{{pet.description}}</p>            
+                        </div>   
+                        <a href="{% url 'pet detail' pet.id %}" class="btn btn-primary">See details</a>                    
+                    </div> 
+                                      
+                </div>                      
             </div>
         {% endfor %}
     </div>

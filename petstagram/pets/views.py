@@ -51,4 +51,12 @@ def pet_edit(request, pk):
     return render(request, 'pets/pet_edit.html', {'form':form})
 
 def pet_delete(request, pk):
-    pass
+    pet_to_delete = Pet.objects.get(pk=pk)
+    if request.method == 'POST':
+        pet_to_delete.delete()
+        return redirect('pet list')
+
+    context = {
+        'pet':pet_to_delete
+    }
+    return render(request, 'pets/pet_delete.html', context)

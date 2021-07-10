@@ -21,10 +21,13 @@
             <ul class="navbar-nav">
                 <li>
                     <a class="nav-link" href="/">Home</a>
-                 </li>
-                 <li>
+                </li>
+                <li>
                     <a class="nav-link" href="{% url 'pet list' %}">All Pet Photos</a>
-                 </li>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'pet create' %}">Add Pet Photo</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Login</a>
                 </li>
@@ -50,7 +53,7 @@
                 <p class="mt-2">Likes: {{ pet.likes_count }}</p>
             </div>
             <a href="{% url 'pet edit' pet.id %}" class="btn btn-success">Edit</a>
-            <a href="url to the delete view" class="btn btn-danger">Delete</a>
+            <a href="{% url 'pet delete' pet.id %}" class="btn btn-danger">Delete</a>
         </div>
         
     </div>
