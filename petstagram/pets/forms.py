@@ -1,5 +1,5 @@
 from django import forms
-from .models import Pet
+from .models import Comment, Pet
 
 class CreatePetForm(forms.ModelForm):
     type = forms.ChoiceField(
@@ -50,5 +50,12 @@ class CreatePetForm(forms.ModelForm):
 
 
 class CommentForm(forms.Form):
-    model = Pet
-    fields = ('comment')
+    text = forms.CharField(
+        widget = forms.Textarea(
+            attrs = {
+            'class': 'form-control rounded-2',
+            }
+        ),   
+    )
+
+

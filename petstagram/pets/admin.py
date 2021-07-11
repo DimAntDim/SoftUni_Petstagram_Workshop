@@ -1,4 +1,4 @@
-from .models import Like, Pet
+from .models import Comment, Like, Pet
 from django.contrib import admin
 
 
@@ -9,4 +9,9 @@ class PetAdmin(admin.ModelAdmin):
 
 @admin.register(Like)
 class LikeAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Comment)
+class Comment(admin.ModelAdmin):
     pass

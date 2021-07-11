@@ -1,5 +1,5 @@
-from .forms import CreatePetForm
-from .models import Like, Pet
+from .forms import CommentForm, CreatePetForm
+from .models import Comment, Like, Pet
 from django.shortcuts import redirect, render
 
 
@@ -14,10 +14,29 @@ def pet_all(request):
 def pet_detail(request, pk):
     pet = Pet.objects.get(pk=pk)
     pet.likes_count = pet.like_set.count()
+
     context = {
-        'pet':pet,
+        'pet': pet,
+        'comment_form': CommentForm(),
+        'comments': pet.comment_set.all(),
     }
+
     return render(request, 'pets/pet_detail.html', context)
+
+
+def pet_comment(request, pk):
+    pet = Pet.objects.get(pk=pk)
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        comment = Comment(
+            text=form.cleaned_data['text'],
+            pet=pet,
+        )
+        comment.save()
+    return redirect('pet detail', pet.id)
+
+
+    
 
 
 def pet_like(request, pk):

@@ -1,4 +1,5 @@
-from .views import pet_create, pet_edit, pet_delete, pet_detail
+
+from .views import pet_create, pet_edit, pet_delete, pet_detail, pet_comment
 from django.urls import path
 from .views import pet_all, pet_like
 
@@ -10,4 +11,5 @@ urlpatterns = [
     path('create/', pet_create, name='pet create'),
     path('edit/<int:pk>', pet_edit, name='pet edit'),
     path('delete/<int:pk>', pet_delete, name='pet delete'),
+    path('comment/<int:pk>', pet_comment, name='pet comment'),
 ]
