@@ -36,9 +36,6 @@ def pet_comment(request, pk):
     return redirect('pet detail', pet.id)
 
 
-    
-
-
 def pet_like(request, pk):
     pet_to_like = Pet.objects.get(pk=pk)
     like = Like(

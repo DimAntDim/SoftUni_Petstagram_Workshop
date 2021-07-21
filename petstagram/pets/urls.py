@@ -1,4 +1,3 @@
-
 from .views import pet_create, pet_edit, pet_delete, pet_detail, pet_comment
 from django.urls import path
 from .views import pet_all, pet_like

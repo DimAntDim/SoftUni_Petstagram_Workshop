@@ -8,7 +8,7 @@ class Pet(models.Model):
         ('Parrot', 'parrot'),
     )
     type = models.CharField(max_length=6, choices=CHOICES)
-    name = models.CharField(max_length=6)
+    name = models.CharField(max_length=10)
     age = models.PositiveIntegerField()
     description = models.TextField(blank=True)
     image_url = models.URLField(blank=True)
