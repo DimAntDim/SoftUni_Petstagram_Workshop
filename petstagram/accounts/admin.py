@@ -16,7 +16,7 @@ class PetstagramUserAdmin(UserAdmin):
         ('Permissions', {
             'fields': ('is_staff', 'is_superuser', 'groups', 'user_permissions'),
         }),
-        ('Important dates', {'fields': ('last_login', 'date_joined')}),
+        ('Important dates', {'fields': ('last_login', 'date_joined',)}),
     )
     add_fieldsets = (
         (None, {
@@ -26,4 +26,7 @@ class PetstagramUserAdmin(UserAdmin):
     )
     readonly_fields = ('date_joined',)
 
-admin.site.register(Profile)
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    pass
