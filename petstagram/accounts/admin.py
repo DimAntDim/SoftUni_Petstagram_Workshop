@@ -1,3 +1,4 @@
+from accounts.models import Profile
 from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
@@ -24,3 +25,5 @@ class PetstagramUserAdmin(UserAdmin):
         }),
     )
     readonly_fields = ('date_joined',)
+
+admin.site.register(Profile)

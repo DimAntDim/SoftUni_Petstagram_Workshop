@@ -1,0 +1,14 @@
+from django.dispatch.dispatcher import receiver
+from django.db.models.signals import post_save
+from django.contrib.auth import get_user_model
+from accounts.models import Profile
+
+UserModel = get_user_model()
+
+@receiver (post_save, sender=UserModel)
+def user_created(sender, instance, created, **kwargs):
+    if created:
+        profile = Profile(
+            user=instance,
+        )
+        profile.save()

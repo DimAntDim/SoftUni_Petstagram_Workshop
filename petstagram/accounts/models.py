@@ -6,7 +6,7 @@ from django.contrib.auth.models import PermissionsMixin
 
 class PetstagramUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
-        unique=True
+        unique=True,
     )
     is_staff = models.BooleanField(
         default=False,
@@ -16,4 +16,24 @@ class PetstagramUser(AbstractBaseUser, PermissionsMixin):
     )
     USERNAME_FIELD = 'email'
     objects = PetstagramUserManager()
-    
+
+
+
+class Profile(models.Model):
+    first_name = models.CharField(
+        max_length=20,
+    )
+    last_name = models.CharField(
+        max_length=20,
+    )
+    profile_picture = models.ImageField(
+        upload_to = 'profile_img',
+        blank=True,
+    )
+    user = models.OneToOneField(
+        PetstagramUser,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+
+from .signals import *
