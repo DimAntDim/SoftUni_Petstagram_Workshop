@@ -39,9 +39,13 @@
     </nav>
     <div class="container">
         <div class="d-flex">
-            <div class="d-inline p-2 w-50">
-                <img src="{{pet.image_url}}" class="w-50 rounded mx-auto d-block">
-            </div>
+            
+                <div class="d-inline p-2 w-50">
+                    <img src="{{pet.image_url}}" class="w-50 rounded mx-auto d-block">
+                </div>
+            
+        
+            
             <div class="d-inline p-2 w-50">
                 <div class="d-flex justify-content-between">
                     <h5><u>Type:</u> {{pet.type}}</h5>
@@ -49,10 +53,21 @@
                     <h5><u>Age:</u> {{pet.age}}</h5>
                 </div>
                 <p class="mt-2">Description: {{pet.description}}</p>
-				<a href="{% url 'pet like' pet.id %}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+				
+                {% if is_owner %}
+                    <a href="{% url 'pet edit' pet.id %}" class="btn btn-success">Edit</a>
+                    <a href="{% url 'pet delete' pet.id %}" class="btn btn-danger">Delete</a>
                 <p class="mt-2">Likes: {{ pet.likes_count }}</p>
-                <a href="{% url 'pet edit' pet.id %}" class="btn btn-success">Edit</a>
-                <a href="{% url 'pet delete' pet.id %}" class="btn btn-danger">Delete</a>
+                {% else %}
+                    <a href="{% url 'like pet' pet.id %}">
+                    {% if is_liked %}
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                    {% else %}
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    {% endif %}
+                </a>
+                <p class="mt-2">Likes: {{ pet.likes_count }}</p>
+                {% endif %}
             </div>
         </div>
         <hr>

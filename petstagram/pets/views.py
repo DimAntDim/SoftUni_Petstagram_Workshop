@@ -15,7 +15,12 @@ def pet_detail(request, pk):
     pet = Pet.objects.get(pk=pk)
     pet.likes_count = pet.like_set.count()
 
+    is_owner = pet.user == request.user
+    is_liked = pet.like_set.filter(user_id=request.user.id)
+
     context = {
+        'is_liked': is_liked,
+        'is_owner': is_owner,
         'pet': pet,
         'comment_form': CommentForm(),
         'comments': pet.comment_set.all(),
