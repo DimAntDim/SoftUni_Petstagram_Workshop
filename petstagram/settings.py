@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'petstagram.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'petstagram',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DATABASE_URL'),
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
 
@@ -135,8 +135,8 @@ MEDIA_ROOT = BASE_DIR / 'media_files'
 AUTH_USER_MODEL = 'accounts.PetstagramUser'
 
 cloudinary.config(
-    cloud_name='minkov',
-    api_key="616642676284453",
-    api_secret="sTKrrlcT3TzS154w3q52ZJ71Ilk",
+    cloud_name='dj8cmrgxe',
+    api_key="577222674295861",
+    api_secret="PztOQ2KUNNVgD7sx8yI3WTev05g",
     secure=True
 )
