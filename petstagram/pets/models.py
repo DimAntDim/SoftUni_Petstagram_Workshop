@@ -4,7 +4,8 @@ from os.path import join
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import models
-
+from cloudinary import models as cloudinary_models
+ 
 # def is_positive(value):
 #     if value <= 0:
 #         raise ValidationError
@@ -34,8 +35,9 @@ class Pet(models.Model):
     age = models.PositiveIntegerField()
     description = models.TextField()
     # image_url = models.URLField()
-    image = models.ImageField(
-        upload_to='pets',
+    image = cloudinary_models.CloudinaryField(
+        resource_type='images/pets/',
+        blank=True,
     )
 
     user = models.ForeignKey(

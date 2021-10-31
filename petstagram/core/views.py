@@ -32,4 +32,4 @@ class BootStrapFormViewMixin:
             if 'class' not in field.widget.attrs:
                 field.widget.attrs['class'] = ''
 
-            field.widget.attrs['class'] += ' form-control'
+            field.widget.attrs['class'] += 'form-control'
