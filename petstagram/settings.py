@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-n01k8*yib!=&u^hz)b#h8%4pr0(v=7y8_5!l)9)gm$=iythn3^'
 
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = os.environ.get('DEBUG', True)
 
 ALLOWED_HOSTS = [
     '*',
@@ -70,23 +70,23 @@ WSGI_APPLICATION = 'petstagram.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'db.sqlite',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DATABASE_NAME', 'postgres_db'),
-        'USER': os.environ.get('DATABASE_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD', '12345qwe'),
-        'HOST': os.environ.get('DATABASE_HOST', '127.0.0.1'),
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ.get('DATABASE_NAME', 'postgres_db'),
+#         'USER': os.environ.get('DATABASE_USER', 'postgres'),
+#         'PASSWORD': os.environ.get('DATABASE_PASSWORD', '12345qwe'),
+#         'HOST': os.environ.get('DATABASE_HOST', '127.0.0.1'),
+#         'PORT': '5432',
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     # {
