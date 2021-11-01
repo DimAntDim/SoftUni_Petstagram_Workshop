@@ -62,17 +62,16 @@ class CommentPetView(LoginRequiredMixin, PostOnlyView):
         pass
 
 
-class LikePetView(LoginRequiredMixin, View):
-    def post(self, request, *args, **kwargs):
-        pet = Pet.objects.get(pk=self.kwargs['pk'])
-        like_object_by_user = pet.like_set.filter(user_id=self.request.user.id) \
+def pet_like(request, pk):
+        pet = Pet.objects.get(pk=pk)
+        like_object_by_user = pet.like_set.filter(user_id=request.user.id) \
             .first()
         if like_object_by_user:
             like_object_by_user.delete()
         else:
             like = Like(
                 pet=pet,
-                user=self.request.user,
+                user=request.user,
             )
             like.save()
         return redirect('pet details', pet.id)
