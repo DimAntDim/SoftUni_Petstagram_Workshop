@@ -36,7 +36,7 @@ class Pet(models.Model):
     description = models.TextField()
     # image_url = models.URLField()
     image = cloudinary_models.CloudinaryField(
-        resource_type='images/pets/',
+        resource_type='staticfiles/images/pets/',
         blank=True,
     )
 
