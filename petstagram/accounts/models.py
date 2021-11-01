@@ -25,7 +25,7 @@ class PetstagramUser(AbstractBaseUser, PermissionsMixin):
 
 class Profile(models.Model):
     profile_image = cloudinary_models.CloudinaryField(
-        resource_type='image',
+        resource_type='images/accounts',
         blank=True,
     )
     user = models.OneToOneField(
