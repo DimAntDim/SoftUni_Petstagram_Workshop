@@ -18,8 +18,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
-
+    'cloudinary',
     'petstagram.accounts',
     'petstagram.common',
     'petstagram.pets',
@@ -123,9 +124,15 @@ MEDIA_ROOT = BASE_DIR / 'media_files'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 AUTH_USER_MODEL = 'accounts.PetstagramUser'
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME' : os.environ.get('CLD_NAME'),
+    'API_KEY' : os.environ.get('CLD_KEY'),
+    'API_SECRET' : os.environ.get('CLD_SECRET'),
+    'secure': True,
+}
 cloudinary.config(
     cloud_name=os.environ.get('CLD_NAME'),
     api_key=os.environ.get('CLD_KEY'),
     api_secret=os.environ.get('CLD_SECRET'),
-    secure=True
+    secure=True,
 )
